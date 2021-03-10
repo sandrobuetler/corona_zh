@@ -1,4 +1,4 @@
-const buttons = document.querySelector('.buttons');
+// const buttons = document.querySelector('.buttons');
 const plzBereiche = Array.from(document.querySelectorAll('g'))
     //.filter(plzBereich => isPlzBereich(plzBereich));
 
