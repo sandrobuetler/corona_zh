@@ -48,3 +48,4 @@ async function getData() {
     });
     return {plz, date, population, newcases};
 }
+

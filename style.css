@@ -38,6 +38,9 @@ html{
 .buttons button:focus {
     outline: none;
 }
+.buttons.selected {
+    background-color: brown;
+}
 svg {
     width: 100%;
     margin: 4rem;
@@ -46,7 +49,7 @@ svg {
 svg g.show {
     fill: red !important;
 }
-svg .cls-2 {
+svg .cls-1 {
     fill: #489dd7;
 }
 
