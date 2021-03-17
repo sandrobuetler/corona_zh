@@ -42,6 +42,7 @@ html{
 .buttons.selected {
     background-color: brown;
 }
+/*
 svg {
     height: 100%;
     margin: 4rem;
