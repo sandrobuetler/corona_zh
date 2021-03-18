@@ -10,7 +10,7 @@
 <div class="topBar" id="topbar">
     <h1>Corona Map</h1>
     <div>
-        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000" value="1594335363000" id="rangeControlledByDate" onchange="setup()" >
+        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000" value="1594335363000" id="rangeControlledByDate" onchange="setup()" onclick="tablefunction()" >
     </div>
 </div>
 <div class="row">
@@ -44,7 +44,21 @@
                 </div>
             </div>
         </div>
+        <div style=" height:600px; overflow:auto; ">
+        <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">PLZ</th>
+            <th scope="col">New Cases</th>
+            <th scope="col">Population</th>
+        </tr>
+        </thead>
+        <tbody id="table-content">
+        </tbody>
+        </table>
     </div>
+        </div>
     <div class="column">
         <svg class="svg2" viewBox="0 0 6272 7360" xmlns="http://www.w3.org/2000/svg">
             <g id="Dots">

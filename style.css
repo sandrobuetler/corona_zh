@@ -67,11 +67,25 @@ body{
     margin-top: 100px;
 }
 .boxed {
-    border: 1px solid green ;
     margin-right: 160px;
     background-color: white;
     color: black;
     margin-top: 10px;
     padding: 20px;
     line-height: 35px;
+    margin-bottom: 100px;
+}
+table {
+    border: 1px solid white;
+    table-layout: fixed;
+    width: 400px;
+    color: white;
+}
+
+th,
+td {
+    border: 0.5px solid white;
+    color: white;
+    width: 265px;
+    overflow: hidden;
 }
