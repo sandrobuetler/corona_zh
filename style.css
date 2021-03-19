@@ -61,11 +61,6 @@ body{
 .radiobutton{
     margin-top: 10px;
 }
-.column #vergleich ,#vergleich1{
-    color: white;
-    font-family: "Source Code Pro";
-    margin-top: 100px;
-}
 .boxed {
     margin-right: 160px;
     background-color: white;
@@ -88,4 +83,33 @@ td {
     color: white;
     width: 265px;
     overflow: hidden;
+}
+
+.row .column #vergleich{
+    margin-top: 10px;
+    color: black;
+    font-family: "Source Code Pro";
+}
+
+.row .column #vergleich1{
+    margin-top: 10px;
+    color: black;
+    font-family: "Source Code Pro";
+}
+
+.row .column #vergleicheins{
+    margin-top: 90px;
+    color: black;
+    font-family: "Source Code Pro";
+}
+
+.row .column #vergleichzwei{
+    margin-top: 90px;
+    color: black;
+    font-family: "Source Code Pro";
+}
+.inputlabel{
+    color: white;
+    font-family: "Source Code Pro";
+    margin-right: 115px;
 }

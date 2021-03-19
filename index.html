@@ -10,7 +10,7 @@
 <div class="topBar" id="topbar">
     <h1>Corona Map</h1>
     <div>
-        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000" value="1594335363000" id="rangeControlledByDate" onchange="setup(); tablefunction()" >
+        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000" value="1594335363000" id="rangeControlledByDate" onchange="setup(); tablefunction(); labelfunction(); labelfunctiontwo()" >
     </div>
 </div>
 <div class="row">
@@ -18,29 +18,30 @@
         <label id="datepickerlabel" for="dateControlledByRange">Datum wählen:</label>
         <input type="date" max="2021-12-31" min="2020-07-09" value="2020-07-09" id="dateControlledByRange" onchange="setup(); tablefunction()"/>
         <div class="relationButtons">
-            <input name="reason" type="radio" value="Fit Description">In Relation zur Bevölkerungsdichte<br>
+            <input name="reason" type="radio" value="Fit Description">Datumsbereich<br>
+            <input class="radiobutton" name="reason" type="radio" value="Fit Description">In Relation zur Bevölkerungsdichte<br>
             <input class="radiobutton" name="reason" type="radio" value="Fit Description">In Relation zur
             Bevölkerungsanzhal<br>
             <input class="radiobutton" name="reason" type="radio" value="Fit Description" checked="checked">Ohne
             Filter<br>
         </div>
         <div class="row">
-            <div id="vergleich" class="column">
-                Vergleich 1 <input name="plzinput" type="text" value="8406">
+            <div class="column">
+                <label for="vergleicheins" class="inputlabel">Vergleich PLZ 1:</label>
+                <input id="vergleicheins" name="plzinput" type="text" value="8001" oninput="labelfunction()">
                 <div class="boxed">
-                    PLZ: 8406 <br>
-                    Population: 235’486 <br>
-                    Neuansteckungen gewähltes Datum: 7-9 <br>
-                    Ansteckungen Total: 468 <br>
+                    <div id="vergleich" >
+
+                    </div>
                 </div>
             </div>
-            <div id="vergleich1" class="column">
-                Vergleich 2 <input name="plzinput" type="text" value="8456">
+            <div class="column">
+                <label for="vergleichzwei" class="inputlabel">Vergleich PLZ 2:</label>
+                <input id="vergleichzwei" name="plzinput" type="text" value="8002" oninput="labelfunction()">
                 <div class="boxed">
-                    PLZ: 8456 <br>
-                    Population: 2’486 <br>
-                    Neuansteckungen gewähltes Datum: 7-9 <br>
-                    Ansteckungen Total: 1’468 <br>
+                    <div id="vergleich1">
+
+                    </div>
                 </div>
             </div>
         </div>
