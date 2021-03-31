@@ -8,6 +8,7 @@ const now = dates_as_int(utc)+86800000;
 document.getElementById("rangeControlledByDate").setAttribute("max", now);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
+document.getElementById("plzPopup").innerHTML="Penis";
 
 window.addEventListener('load', setup);
 window.addEventListener('load', tablefunction);
@@ -46,11 +47,11 @@ async function setup() {
         for (var i = 0; i < globalTemps.date.length; i++) {
             if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
                 if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-1) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-1) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
                 } else if (globalTemps.newcases[i].toString().length < 6 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-2) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-2) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
                 } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-3) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-3) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
                 }
             }
         }
@@ -137,3 +138,24 @@ async function labelfunction() {
         }
     }
 }
+var myicon = document.getElementById("Dots");
+var mypopup = document.getElementById("mypopup");
+
+myicon.addEventListener("mouseover", showPopup);
+myicon.addEventListener("mouseout", hidePopup);
+
+function showPopup(evt) {
+    var iconPos = myicon.getBoundingClientRect();
+    mypopup.style.display = "block";
+}
+
+function hidePopup(evt) {
+    mypopup.style.display = "none";
+}
+$(document).on('mousemove', function(e){
+    $('#mypopup').css({
+        left:  e.pageX+20,
+        top:   e.pageY-70
+    });
+});
+
