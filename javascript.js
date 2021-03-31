@@ -1,10 +1,10 @@
 const colorarray = ['ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000','ff1000', 'ff1800', 'ff2000', 'ff2800', 'ff3000', 'ff3800', 'ff4000', 'ff4800', 'ff5000', 'ff5800', 'ff6000', 'ff6800', 'ff7000', 'ff7800', 'ff8000', 'ff8800', 'ff9000', 'ff9800', 'ffa000', 'ffa800', 'ffb000', 'ffb800', 'ffc000', 'ffc800', 'ffd000', 'ffd800', 'ffe000', 'ffe800', 'fff000', 'fff800', 'ffff00', 'f7ff00', 'efff00', 'e7ff00', 'dfff00', 'd7ff00', 'cfff00', 'c7ff00', 'bfff00', 'b7ff00', 'afff00', 'a7ff00', '9fff00', '97ff00', '8fff00', '87ff00', '7fff00', '77ff00', '6fff00', '67ff00', '5fff00', '57ff00', '4fff00', '47ff00', '3fff00', '37ff00', '2fff00', '27ff00', '1fff00', '17ff00']
+const circlearray = [9, 8, 7, 11, 12, 14, 16, 17, 11, 14, 20, 40, 19, 30, 16, 28, 30, 20, 23, 18, 26, 20, 14, 9, 9 ,13, 22, 65, 6, 26, 21, 37, 19, 11, 9, 21, 6, 4, 12, 3, 36, 18, 25, 47, 47, 22, 37, 75, 8, 21, 56, 28, 57, 40, 29, 24, 30, 15, 45, 44, 71, 37, 17, 25, 30, 32, 80, 27, 28, 20, 38, 46, 60, 45, 25, 18, 39, 60, 8, 4, 11, 26, 4, 92, 43, 32, 18, 17, 68, 52, 48, 20, 32, 19, 29, 14, 17, 45, 14, 67, 12, 54, 62, 82, 20, 77, 13, 49, 78, 45,83, 30, 29, 50, 31, 65, 17, 31, 40, 48, 33, 51, 40, 12, 25, 56, 51, 24, 41, 21, 30, 16, 15, 29, 25, 29, 16, 17, 29, 15, 68, 11, 47, 24, 30, 21, 21, 39, 39, 36, 33, 62, 33, 44, 29, 38, 5, 18, 60, 27, 97, 24, 50, 52, 30, 70, 14, 98, 38, 29, 47, 38, 35, 48, 13, 29, 27, 53, 26, 13, 52, 15, 30, 19, 41, 75, 17, 26, 8, 36, 31, 63, 15, 11, 33, 30, 40, 48, 7, 14, 45, 42, 117, 12, 36, 21, 15, 43, 59, 19, 21, 37, 8, 16, 19, 13, 15, 14, 20, 45, 25, 49, 68, 53, 37, 18, 36, 57, 25, 36, 21, 31, 16, 37, 30, 35, 28, 37, 48, 16, 40, 61, 24, 35, 15, 34, 47, 5, 10, 15];
 const reversed = colorarray.reverse();
 const utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const utc2 = new Date().toJSON().slice(0,10).replace(/-/g,'-');
 const dates_as_int = (Date.parse);
 const now = dates_as_int(utc)+86800000;
-
 document.getElementById("rangeControlledByDate").setAttribute("max", now);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
@@ -29,7 +29,7 @@ async function setup() {
             }
         }
     }
-    if(document.getElementById("anzahlb").checked){
+    if(document.getElementById("anzahlPop").checked){
         for (var i = 0; i < globalTemps.date.length; i++) {
             if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
                 if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
@@ -38,6 +38,19 @@ async function setup() {
                     document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(((globalTemps.newcases[i].toString().slice(-2) / 3)/globalTemps.population[i])*20000)];
                 } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
                     document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(((globalTemps.newcases[i].toString().slice(-3) / 3)/globalTemps.population[i])*20000)];
+                }
+            }
+        }
+    }
+    else if(document.getElementById("dichte").checked){
+        for (var i = 0; i < globalTemps.date.length; i++) {
+            if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
+                if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-1) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
+                } else if (globalTemps.newcases[i].toString().length < 6 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-2) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
+                } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
+                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-3) / 3)*(globalTemps.population[i]/circlearray[i%251]))];
                 }
             }
         }
