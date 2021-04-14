@@ -24,41 +24,17 @@ window.addEventListener('load', labelfunction);
 async function setup() {
     const globalTemps = await getData();
 
-    for (var i = 0; i < globalTemps.date.length; i++) {
-        if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
-            if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
-                document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(globalTemps.newcases[i].toString().slice(-1) / 3)];
-            } else if (globalTemps.newcases[i].toString().length < 6 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(globalTemps.newcases[i].toString().slice(-2) / 3)];
-            } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(globalTemps.newcases[i].toString().slice(-3) / 3)];
-            }
-        }
+    for (let i = 0; i < globalTemps.date.length; i++) {
+        setPlzStyleByCases(globalTemps, i);
     }
     if(document.getElementById("anzahlPop").checked){
-        for (var i = 0; i < globalTemps.date.length; i++) {
-            if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
-                if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(((globalTemps.newcases[i].toString().slice(-1) / 3)/globalTemps.population[i])*20000)];
-                } else if (globalTemps.newcases[i].toString().length < 6 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(((globalTemps.newcases[i].toString().slice(-2) / 3)/globalTemps.population[i])*20000)];
-                } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt(((globalTemps.newcases[i].toString().slice(-3) / 3)/globalTemps.population[i])*20000)];
-                }
-            }
+        for (let i = 0; i < globalTemps.date.length; i++) {
+            setPlzStyleByPopulation(globalTemps, i);
         }
     }
     else if(document.getElementById("dichte").checked){
-        for (var i = 0; i < globalTemps.date.length; i++) {
-            if (globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
-                if (globalTemps.newcases[i].toString().length < 4 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt" ) {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-1) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
-                } else if (globalTemps.newcases[i].toString().length < 6 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-2) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
-                } else if (globalTemps.newcases[i].toString().length < 8 && globalTemps.plz[i].toString()!= "PLZ_uebrige" && globalTemps.plz[i].toString()!= "unbekannt") {
-                    document.getElementById("_" + globalTemps.plz[i]).style.fill = "#" + reversed[parseInt((globalTemps.newcases[i].toString().slice(-3) / 3)*(globalTemps.population[i]/circlearray[i%251])/500)];
-                }
-            }
+        for (let i = 0; i < globalTemps.date.length; i++) {
+            setPlzStyleByDichte(globalTemps, i);
         }
     }
 }
@@ -88,8 +64,13 @@ async function getData() {
 }
 
 async function updateHoverData(id){
-    hoverId = id;
-    updatePopupInfo();
+    const globalTemps = await getData();
+    for (var i = 0; i < globalTemps.plz.length; i++) {
+        if (globalTemps.plz[i]==id) {
+            hoverId = globalTemps.plz[i];
+        }
+    }
+    updatePopupInfo(hoverId);
     console.log(hoverId);
 }
 
