@@ -7,6 +7,8 @@ const dates_as_int = (Date.parse);
 const now = dates_as_int(utc)+86800000;
 
 let hoverId = "null";
+let cases = "null";
+let population = "null";
 
 
 
@@ -42,6 +44,8 @@ async function setup() {
 //Todo: Display: Ortsname/PLZ/Cases/Population
 function updatePopupInfo(hoverId) {
     document.getElementById("plzPopup").innerHTML=hoverId;
+    document.getElementById("casesPopup").innerHTML=cases;
+    document.getElementById("populationPopup").innerHTML=population;
 }
 
 async function getData() {
@@ -66,8 +70,10 @@ async function getData() {
 async function updateHoverData(id){
     const globalTemps = await getData();
     for (var i = 0; i < globalTemps.plz.length; i++) {
-        if (globalTemps.plz[i]==id) {
+        if (globalTemps.plz[i]==id && globalTemps.date[i] == document.getElementById("dateControlledByRange").value) {
             hoverId = globalTemps.plz[i];
+            cases = globalTemps.newcases[i];
+            population = globalTemps.population[i];
         }
     }
     updatePopupInfo(hoverId);
