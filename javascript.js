@@ -21,7 +21,62 @@ window.addEventListener('load', setup);
 window.addEventListener('load', tablefunction);
 window.addEventListener('load', labelfunction);
 
+const setPlzStyleByCases = (globalTemps, i) => {
+    if (globalTemps.date[i] !== document.getElementById("dateControlledByRange").value) { // guard clause
+        return;
+    }
+    const plz = globalTemps.plz[i];
+    const newCases = globalTemps.newcases[i];
+    if ("PLZ_uebrige" === plz.toString() || "unbekannt" === plz.toString()) { // yoda conditional
+        return;
+    }
+    if        (newCases.toString().length < 4 ) {   // 0, 1, 2, 3
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(newCases.toString().slice(-1) / 3)];
+    } else if (newCases.toString().length < 6 ) {   // 4, 5
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(newCases.toString().slice(-2) / 3)];
+    } else if (newCases.toString().length < 8 ) {   // 6, 7
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(newCases.toString().slice(-3) / 3)];
+    }
 
+}
+const setPlzStyleByPopulation = (globalTemps, i) => {
+    if (globalTemps.date[i] !== document.getElementById("dateControlledByRange").value) { // guard clause
+        return;
+    }
+    const plz = globalTemps.plz[i];
+    const newCases = globalTemps.newcases[i];
+    const population = globalTemps.population[i];
+    if ("PLZ_uebrige" === plz.toString() || "unbekannt" === plz.toString()) { // yoda conditional
+        return;
+    }
+    if        (newCases.toString().length < 4 ) {   // 0, 1, 2, 3
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(((newCases.toString().slice(-1) / 3)/population)*20000)];
+    } else if (newCases.toString().length < 6 ) {   // 4, 5
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(((newCases.toString().slice(-2) / 3)/population)*20000)];
+    } else if (newCases.toString().length < 8 ) {   // 6, 7
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt(((newCases.toString().slice(-3) / 3)/population)*20000)];
+    }
+
+}
+const setPlzStyleByDichte = (globalTemps, i) => {
+    if (globalTemps.date[i] !== document.getElementById("dateControlledByRange").value) { // guard clause
+        return;
+    }
+    const plz = globalTemps.plz[i];
+    const newCases = globalTemps.newcases[i];
+    const population = globalTemps.population[i];
+    if ("PLZ_uebrige" === plz.toString() || "unbekannt" === plz.toString()) { // yoda conditional
+        return;
+    }
+    if        (newCases.toString().length < 4 ) {   // 0, 1, 2, 3
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt((newCases.toString().slice(-1) / 3)*(population/circlearray[i%251])/500)];
+    } else if (newCases.toString().length < 6 ) {   // 4, 5
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt((newCases.toString().slice(-2) / 3)*(population/circlearray[i%251])/500)];
+    } else if (newCases.toString().length < 8 ) {   // 6, 7
+        document.getElementById("_" + plz).style.fill = "#" + reversed[parseInt((newCases.toString().slice(-3) / 3)*(population/circlearray[i%251])/500)];
+    }
+
+}
 
 async function setup() {
     const globalTemps = await getData();
