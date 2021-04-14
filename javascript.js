@@ -5,10 +5,15 @@ const utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 const utc2 = new Date().toJSON().slice(0,10).replace(/-/g,'-');
 const dates_as_int = (Date.parse);
 const now = dates_as_int(utc)+86800000;
+
+let hoverId = "null";
+
+
+
 document.getElementById("rangeControlledByDate").setAttribute("max", now);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
-document.getElementById("plzPopup").innerHTML="Penis";
+
 
 window.addEventListener('load', setup);
 window.addEventListener('load', tablefunction);
@@ -58,6 +63,11 @@ async function setup() {
     }
 }
 
+//Todo: Display: Ortsname/PLZ/Cases/Population
+function updatePopupInfo(hoverId) {
+    document.getElementById("plzPopup").innerHTML=hoverId;
+}
+
 async function getData() {
     const response = await fetch('https://raw.githubusercontent.com/openZH/covid_19/master/fallzahlen_plz/fallzahlen_kanton_ZH_plz.csv');
     const data = await response.text();
@@ -76,6 +86,13 @@ async function getData() {
     });
     return {plz, date, population, newcases};
 }
+
+async function updateHoverData(id){
+    hoverId = id;
+    updatePopupInfo();
+    console.log(hoverId);
+}
+
 jQuery(function($) {
 
     $('#dateControlledByRange').on('input', function() {
