@@ -148,3 +148,8 @@ td {
     position:fixed;
     overflow:hidden;
 }
+#Dots:hover g{
+    opacity:1;
+} #Dots g:hover{
+    opacity:0.5;
+}
