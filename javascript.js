@@ -176,6 +176,12 @@ async function labelfunction() {
     const arrayThree = globalTemps.newcases;
     const arrayfour = globalTemps.population;
     const maxSize = Math.max(arrayOne.length, arrayTwo.length, arrayThree.length, arrayfour.length);
+    const vergleich = document.getElementById("vergleicheins");
+    if (vergleich.length < 4){
+
+    }
+    console.log("laenge textinput: "+document.getElementById("vergleicheins"));
+    $('#_'+document.getElementById("vergleicheins").value).empty();
     $('#vergleich').empty();
     $('#vergleich1').empty();
     for (let i = 0; i < maxSize; i++) {
@@ -198,6 +204,7 @@ async function labelfunction() {
             $('#vergleich1').append(row);
         }
     }
+    document.getElementById("_"+document.getElementById("vergleicheins").value).style.opacity = "0.5";
 }
 var myicon = document.getElementById("Dots");
 var mypopup = document.getElementById("mypopup");
