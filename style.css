@@ -152,8 +152,5 @@ td {
 #Dots:hover g{
     opacity:1;
 } #Dots g:hover{
-    opacity:0.5;
-} #Dots g:active{
-        opacity:0.5;
-    }
-
+    opacity:0.5!important;
+}

@@ -176,14 +176,33 @@ async function labelfunction() {
     const arrayThree = globalTemps.newcases;
     const arrayfour = globalTemps.population;
     const maxSize = Math.max(arrayOne.length, arrayTwo.length, arrayThree.length, arrayfour.length);
-    const vergleich = document.getElementById("vergleicheins");
-    if (vergleich.length < 4){
+    const vergleich = document.getElementById("vergleicheins").value;
+    const vergleich1 = document.getElementById("vergleichzwei").value;
 
-    }
-    console.log("laenge textinput: "+document.getElementById("vergleicheins"));
-    $('#_'+document.getElementById("vergleicheins").value).empty();
     $('#vergleich').empty();
     $('#vergleich1').empty();
+
+    if (!vergleich.length < 4 && vergleich1.length < 4){
+        const allDotGroups = document.getElementById("Dots").querySelectorAll("g");
+        for (let i = 0; i < allDotGroups.length; i++) {
+            allDotGroups[i].style.opacity = "1";
+        }
+        document.getElementById("_"+document.getElementById("vergleicheins").value).style.opacity = "0.5";
+    }
+    if (vergleich.length < 4 && !vergleich1.length < 4){
+        const allDotGroups = document.getElementById("Dots").querySelectorAll("g");
+        for (let i = 0; i < allDotGroups.length; i++) {
+            allDotGroups[i].style.opacity = "1";
+        }
+        document.getElementById("_"+document.getElementById("vergleichzwei").value).style.opacity = "0.5";
+    }
+    if (vergleich.length < 4 && vergleich1.length < 4){
+        const allDotGroups = document.getElementById("Dots").querySelectorAll("g");
+        for (let i = 0; i < allDotGroups.length; i++) {
+            allDotGroups[i].style.opacity = "1";
+        }
+    }
+
     for (let i = 0; i < maxSize; i++) {
         if (arrayOne[i] == document.getElementById("dateControlledByRange").value && arrayTwo[i] == document.getElementById("vergleicheins").value){
             let row = $('<div>');
@@ -205,6 +224,7 @@ async function labelfunction() {
         }
     }
     document.getElementById("_"+document.getElementById("vergleicheins").value).style.opacity = "0.5";
+    document.getElementById("_"+document.getElementById("vergleichzwei").value).style.opacity = "0.5";
 }
 var myicon = document.getElementById("Dots");
 var mypopup = document.getElementById("mypopup");
