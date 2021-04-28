@@ -101,9 +101,9 @@ async function setup() {
 
 //Todo: Display: Ortsname/PLZ/Cases/Population
 function updatePopupInfo(hoverId) {
-    document.getElementById("plzPopup").innerHTML=hoverId;
-    document.getElementById("casesPopup").innerHTML=cases;
-    document.getElementById("populationPopup").innerHTML=population;
+    document.getElementById("plzPopup").innerHTML="PLZ: "+hoverId;
+    document.getElementById("casesPopup").innerHTML="New Cases: "+cases;
+    document.getElementById("populationPopup").innerHTML="Population: "+population;
 }
 
 async function getData() {
@@ -132,9 +132,16 @@ async function updateHoverData(id){
             hoverId = globalTemps.plz[i];
             cases = globalTemps.newcases[i];
             population = globalTemps.population[i];
+            updatePopupInfo(hoverId);
+            document.getElementById('easterEgg').innerHTML = '';
+            return;
         }
     }
-    updatePopupInfo(hoverId);
+    document.getElementById('easterEgg').innerHTML = '<img width="300" height="300" src="img/baywatch.gif">';
+    document.getElementById('plzPopup').innerHTML = '';
+    document.getElementById('casesPopup').innerHTML = '';
+    document.getElementById('populationPopup').innerHTML = '';
+
 }
 
 jQuery(function($) {
