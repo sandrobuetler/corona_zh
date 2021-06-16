@@ -152,5 +152,6 @@ td {
 #Dots:hover g{
     opacity:1;
 } #Dots g:hover{
-    opacity:0.5!important;
+      stroke: white;
+      stroke-width: 7px;
 }

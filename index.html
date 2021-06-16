@@ -10,9 +10,10 @@
 <div class="topBar" id="topbar">
     <h1>Corona Map</h1>
     <div>
-        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000" value="1594335363000" id="rangeControlledByDate" onchange="setup(); tablefunction(); labelfunction();" >
+        <input class="slider" type="range" step="86400000" max="1595289600000" min="1594335363000"  id="rangeControlledByDate" oninput="setup(); tablefunction(); labelfunction();" />
     </div>
 </div>
+
 <div class="row">
     <div class="column">
         <label id="datepickerlabel" for="dateControlledByRange">Datum wählen:</label>

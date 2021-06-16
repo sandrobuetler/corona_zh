@@ -17,6 +17,13 @@ document.getElementById("rangeControlledByDate").setAttribute("max", now);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
 document.getElementById("dateControlledByRange").setAttribute("max", utc2);
 
+var slider = document.getElementById('rangeControlledByDate');
+slider.addEventListener('input', sliderChange);
+
+function sliderChange() {
+    console.log(this.value);
+
+}
 
 window.addEventListener('load', setup);
 window.addEventListener('load', tablefunction);
@@ -83,6 +90,7 @@ const setPlzStyleByDichte = (globalTemps, i) => {
 
 async function setup() {
     const globalTemps = await getData();
+    console.log(document.getElementById('rangeControlledByDate').value);
 
     for (let i = 0; i < globalTemps.date.length; i++) {
         setPlzStyleByCases(globalTemps, i);
@@ -176,6 +184,7 @@ async function tablefunction() {
     }
 }
 
+
 async function labelfunction() {
     const globalTemps = await getData();
     const arrayOne = globalTemps.date;
@@ -253,4 +262,5 @@ $(document).on('mousemove', function(e){
         top:   e.pageY-70
     });
 });
+
 
